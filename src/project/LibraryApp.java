@@ -8,14 +8,19 @@ public class LibraryApp {
 
     public static void main(String[] args) {
         while (true) {
-            System.out.println("\n*** Knihovní systém ***");
+        	System.out.println("\n*** Knihovní systém ***");
             System.out.println("1. Přidat knihu");
             System.out.println("2. Aktualizovat knihu");
             System.out.println("3. Smazat knihu");
             System.out.println("4. Změnit dostupnost knihy");
             System.out.println("5. Vypsat všechny knihy");
             System.out.println("6. Vyhledat knihu");
-            System.out.println("7. Ukončit program");
+            System.out.println("7. Výpis knih daného autora");
+            System.out.println("8. Výpis knih daného žánru");
+            System.out.println("9. Výpis všech vypůjčených knih");
+            System.out.println("10. Uložit knihu do souboru");
+            System.out.println("11. Načíst knihu ze souboru");
+            System.out.println("12. Ukončit program");
             System.out.print("Zvolte možnost: ");
 
             int choice = scanner.nextInt();
@@ -49,6 +54,29 @@ public class LibraryApp {
                     library.findBook(titleToFind);
                     break;
                 case 7:
+                    System.out.print("Zadejte autora: ");
+                    String author = scanner.nextLine();
+                    library.printBooksByAuthor(author);
+                    break;
+                case 8:
+                    System.out.print("Zadejte žánr: ");
+                    String genre = scanner.nextLine();
+                    library.printBooksByGenre(genre);
+                    break;
+                case 9:
+                    library.printBorrowedBooks();
+                    break;
+                case 10:
+                    System.out.print("Zadejte název knihy k uložení: ");
+                    String titleToSave = scanner.nextLine();
+                    library.saveBookToFile(titleToSave);
+                    break;
+                case 11:
+                    System.out.print("Zadejte název souboru k načtení: ");
+                    String filename = scanner.nextLine();
+                    library.loadBookFromFile(filename);
+                    break;
+                case 12:
                     System.out.println("Ukončení programu...");
                     scanner.close();
                     return;
