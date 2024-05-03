@@ -19,9 +19,15 @@ public class LibrarySystem {
 
     public void addBook() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Zadejte typ knihy ('Roman' nebo 'Ucebnice'):");
-        String type = scanner.nextLine();
+        String type = "";
+        
+        while (!type.equalsIgnoreCase("Roman") && !type.equalsIgnoreCase("Ucebnice")) {
+            System.out.println("Zadejte typ knihy ('Roman' nebo 'Ucebnice'):");
+            type = scanner.nextLine().trim();
+            if (!type.equalsIgnoreCase("Roman") && !type.equalsIgnoreCase("Ucebnice")) {
+                System.out.println("Neplatný typ knihy. Prosím, zadejte 'Roman' nebo 'Ucebnice'.");
+            }
+        }
 
         System.out.println("Zadejte název knihy:");
         String title = scanner.nextLine();
@@ -30,7 +36,16 @@ public class LibrarySystem {
         String author = scanner.nextLine();
 
         System.out.println("Zadejte rok vydání:");
-        int yearPublished = scanner.nextInt();
+        int yearPublished = 0;
+        boolean validYear = false;
+        while (!validYear) {
+            try {
+                yearPublished = Integer.parseInt(scanner.nextLine());
+                validYear = true; // Rok byl úspěšně zadán, opustíme smyčku
+            } catch (NumberFormatException e) {
+                System.out.println("Neplatný rok vydání. Prosím, zadejte číslo.");
+            }
+        }
 
         boolean isAvailable = true; // Nově přidané knihy jsou defaultně dostupné
 
@@ -42,10 +57,18 @@ public class LibrarySystem {
             books.add(new Novel(title, author, yearPublished, isAvailable, genre));
         } else if (type.equalsIgnoreCase("Ucebnice")) {
             System.out.println("Zadejte ročník, pro který je učebnice určena:");
-            int gradeLevel = scanner.nextInt();
+            int gradeLevel = 0;
+            validYear = false;
+            while (!validYear) {
+                try {
+                    gradeLevel = Integer.parseInt(scanner.nextLine());
+                    validYear = true; // Ročník byl úspěšně zadán, opustíme smyčku
+                } catch (NumberFormatException e) {
+                    System.out.println("Neplatný ročník. Prosím, zadejte číslo.");
+                }
+            }
             books.add(new Textbook(title, author, yearPublished, isAvailable, gradeLevel));
         }
-
         System.out.println("Kniha byla přidána.");
     }
     
