@@ -41,7 +41,3 @@ Zde je několik příkladů příkazů, které můžete v aplikaci použít:
 - Přidání knihy: Zvolte možnost 1 a postupujte podle instrukcí.
 - Aktualizace knihy: Zvolte možnost 2 a zadajte název knihy, kterou chcete aktualizovat.
 - Mazání knihy: Zvolte možnost 3 a zadajte název knihy k odstranění.
-
----
-
-Tento README byl vytvořen pro potřeby školního projektu v oblasti informačních technologií.
