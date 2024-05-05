@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class LibrarySystem {
-    private List<Book> books;  // Seznam knih
+    private List<Book> books;  
 
     public LibrarySystem() {
         books = new ArrayList<>();
@@ -35,34 +34,32 @@ public class LibrarySystem {
         System.out.println("Zadejte autora knihy:");
         String author = scanner.nextLine();
 
-        System.out.println("Zadejte rok vydání:");
         int yearPublished = 0;
         boolean validYear = false;
         while (!validYear) {
+            System.out.println("Zadejte rok vydání:");
             try {
                 yearPublished = Integer.parseInt(scanner.nextLine());
-                validYear = true; // Rok byl úspěšně zadán, opustíme smyčku
+                validYear = true; 
             } catch (NumberFormatException e) {
                 System.out.println("Neplatný rok vydání. Prosím, zadejte číslo.");
             }
         }
 
-        boolean isAvailable = true; // Nově přidané knihy jsou defaultně dostupné
-
-        scanner.nextLine(); // Clear the buffer
+        boolean isAvailable = true; 
 
         if (type.equalsIgnoreCase("Roman")) {
             System.out.println("Zadejte žánr:");
             String genre = scanner.nextLine();
             books.add(new Novel(title, author, yearPublished, isAvailable, genre));
         } else if (type.equalsIgnoreCase("Ucebnice")) {
-            System.out.println("Zadejte ročník, pro který je učebnice určena:");
             int gradeLevel = 0;
             validYear = false;
             while (!validYear) {
+                System.out.println("Zadejte ročník, pro který je učebnice určena:");
                 try {
                     gradeLevel = Integer.parseInt(scanner.nextLine());
-                    validYear = true; // Ročník byl úspěšně zadán, opustíme smyčku
+                    validYear = true; 
                 } catch (NumberFormatException e) {
                     System.out.println("Neplatný ročník. Prosím, zadejte číslo.");
                 }
@@ -81,11 +78,11 @@ public class LibrarySystem {
                 book.setAuthor(author);
 
                 System.out.println("Zadejte nový rok vydání:");
-                int year = scanner.nextInt();
+                int year = Integer.parseInt(scanner.nextLine());
                 book.setYearPublished(year);
 
                 System.out.println("Je kniha dostupná? (true/false)");
-                boolean isAvailable = scanner.nextBoolean();
+                boolean isAvailable = Boolean.parseBoolean(scanner.nextLine());
                 book.setAvailable(isAvailable);
 
                 System.out.println("Údaje o knize byly aktualizovány.");
@@ -171,5 +168,6 @@ public class LibrarySystem {
         }
     }
 }
+
 
 
