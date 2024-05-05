@@ -8,7 +8,7 @@ public class LibraryApp {
 
     public static void main(String[] args) {
         while (true) {
-        	System.out.println("\n*** Knihovní systém ***");
+            System.out.println("\n*** Knihovní systém ***");
             System.out.println("1. Přidat knihu");
             System.out.println("2. Aktualizovat knihu");
             System.out.println("3. Smazat knihu");
@@ -25,78 +25,78 @@ public class LibraryApp {
 
             int choice;
             try {
-                choice = Integer.parseInt(scanner.nextLine().trim());
-                scanner.nextLine(); // Odstranění přebytečného konce řádku
-            }
-            
-            catch (NumberFormatException e) {
+                choice = scanner.nextInt();
+            } catch (Exception e) {
                 System.out.println("Neplatná volba. Zkuste to znovu.");
+                scanner.nextLine(); 
                 continue;
             }
 
-                switch (choice) {
-                    case 1:
-                    	try {
-                            library.addBook();
-                        } catch (Exception e) {
-                            System.out.println("Chyba při přidávání knihy: " + e.getMessage());
-                        }
-                        break;
-                    case 2:
-                        System.out.print("Zadejte název knihy pro aktualizaci: ");
-                        String titleToUpdate = scanner.nextLine();
-                        library.updateBook(titleToUpdate);
-                        break;
-                    case 3:
-                        System.out.print("Zadejte název knihy k odstranění: ");
-                        String titleToDelete = scanner.nextLine();
-                        library.deleteBook(titleToDelete);
-                        break;
-                    case 4:
-                        System.out.print("Zadejte název knihy pro změnu dostupnosti: ");
-                        String titleToToggle = scanner.nextLine();
-                        library.toggleBookAvailability(titleToToggle);
-                        break;
-                    case 5:
-                        library.printBooks();
-                        break;
-                    case 6:
-                        System.out.print("Zadejte název knihy k vyhledání: ");
-                        String titleToFind = scanner.nextLine();
-                        library.findBook(titleToFind);
-                        break;
-                    case 7:
-                        System.out.print("Zadejte autora: ");
-                        String author = scanner.nextLine();
-                        library.printBooksByAuthor(author);
-                        break;
-                    case 8:
-                        System.out.print("Zadejte žánr: ");
-                        String genre = scanner.nextLine();
-                        library.printBooksByGenre(genre);
-                        break;
-                    case 9:
-                        library.printBorrowedBooks();
-                        break;
-                    case 10:
-                        System.out.print("Zadejte název knihy k uložení: ");
-                        String titleToSave = scanner.nextLine();
-                        library.saveBookToFile(titleToSave);
-                        break;
-                    case 11:
-                        System.out.print("Zadejte název souboru k načtení: ");
-                        String filename = scanner.nextLine();
-                        library.loadBookFromFile(filename);
-                        break;
-                    case 12:
-                        System.out.println("Ukončení programu...");
-                        scanner.close();
-                        return;
-                    default:
-                        System.out.println("Neplatná volba. Zkuste to znovu.");
-                }
+            scanner.nextLine(); 
+
+            switch (choice) {
+                case 1:
+                    try {
+                        library.addBook();
+                    } catch (Exception e) {
+                        System.out.println("Chyba při přidávání knihy: " + e.getMessage());
+                    }
+                    break;
+                case 2:
+                    System.out.print("Zadejte název knihy pro aktualizaci: ");
+                    String titleToUpdate = scanner.nextLine();
+                    library.updateBook(titleToUpdate);
+                    break;
+                case 3:
+                    System.out.print("Zadejte název knihy k odstranění: ");
+                    String titleToDelete = scanner.nextLine();
+                    library.deleteBook(titleToDelete);
+                    break;
+                case 4:
+                    System.out.print("Zadejte název knihy pro změnu dostupnosti: ");
+                    String titleToToggle = scanner.nextLine();
+                    library.toggleBookAvailability(titleToToggle);
+                    break;
+                case 5:
+                    library.printBooks();
+                    break;
+                case 6:
+                    System.out.print("Zadejte název knihy k vyhledání: ");
+                    String titleToFind = scanner.nextLine();
+                    library.findBook(titleToFind);
+                    break;
+                case 7:
+                    System.out.print("Zadejte autora: ");
+                    String author = scanner.nextLine();
+                    library.printBooksByAuthor(author);
+                    break;
+                case 8:
+                    System.out.print("Zadejte žánr: ");
+                    String genre = scanner.nextLine();
+                    library.printBooksByGenre(genre);
+                    break;
+                case 9:
+                    library.printBorrowedBooks();
+                    break;
+                case 10:
+                    System.out.print("Zadejte název knihy k uložení: ");
+                    String titleToSave = scanner.nextLine();
+                    library.saveBookToFile(titleToSave);
+                    break;
+                case 11:
+                    System.out.print("Zadejte název souboru k načtení: ");
+                    String filename = scanner.nextLine();
+                    library.loadBookFromFile(filename);
+                    break;
+                case 12:
+                    System.out.println("Ukončení programu...");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Neplatná volba. Zkuste to znovu.");
             }
-            
         }
     }
+}
+
 
